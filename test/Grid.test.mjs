@@ -60,4 +60,11 @@ describe('Simulate one generation', () => {
        ...`
     ))
   })
+
+  test('cells with one neighbor die', () => {
+    const grid = new Grid(2, 1, [[true, true]])
+    expect(grid.toString()).to.equal('XX')
+    grid.tick()
+    expect(grid.toString()).to.equal('..')
+  })
 })
