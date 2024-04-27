@@ -57,8 +57,9 @@ export class Parser {
     })
 
     pattern = pattern.slice(0, -1) + '!'
+    const lines = pattern.match(/.{1,70}/g)
 
-    return pattern
+    return lines.join('\n')
   }
 
   getGrid() {
