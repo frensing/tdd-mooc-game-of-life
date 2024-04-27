@@ -5,8 +5,9 @@ import { normalize } from "./utils.mjs";
 
 describe('itegration test the game', () => {
   const blockPath = './test/rle/block.rle'
+  const blinkerPath = './test/rle/blinker.rle'
 
-  test('starting the game without config prints help', () => {
+  test('the game initializes and runs', () => {
     const game = new Game(blockPath, 3)
     expect(game.toString()).to.equal(normalize(
       `XX
@@ -16,6 +17,21 @@ describe('itegration test the game', () => {
     expect(game.toString()).to.equal(normalize(
       `XX
        XX`
+    ))
+  })
+
+  test('the game runs multiple generations', () => {
+    const game = new Game(blinkerPath, 3)
+    expect(game.toString()).to.equal(normalize(
+      `...
+       XXX
+       ...`
+    ))
+    game.run()
+    expect(game.toString()).to.equal(normalize(
+      `.X.
+       .X.
+       .X.`
     ))
   })
 })
