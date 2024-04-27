@@ -19,6 +19,31 @@ export class Parser {
     this.pattern = lines.slice(1).map(x => x.trim()).join('')
   }
 
+  getGrid() {
+    const re = /(\d*)([bo])/g
+
+    const grid = Array.from(Array(this.getHeight()), () => Array(this.getWidth()).fill(false))
+
+    let rows = this.getPattern().slice(0, -1).split('$')
+    rows.forEach((row, y) => {
+      let x = 0
+
+      const matches = row.matchAll(re)
+      for (const match of matches) {
+        const n = parseInt(match[1])
+        const c = match[2]
+
+        if (c == 'o') {
+          for (let i = 0; i < x + n; i++) {
+            grid[y][x+i] = true
+          }
+        }
+        x += n
+      }
+    });
+    return grid
+  }
+
   getWidth() {
     return this.width
   }

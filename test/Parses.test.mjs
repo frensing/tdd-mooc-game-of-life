@@ -2,6 +2,10 @@ import { beforeEach, describe, test } from "vitest";
 import { expect } from "chai";
 import { Parser } from "../src/Parser.mjs";
 
+const BLOCK = 
+  `x = 2, y = 2
+   2o$2o!`
+
 const GLIDER =  
   `x = 3, y = 3
    bo$2bo$3o!`
@@ -44,5 +48,13 @@ describe('Parser', () => {
     expect(parser.getWidth()).to.equal(3)
     expect(parser.getHeight()).to.equal(3)
     expect(parser.getPattern()).to.equal('bo$2bo$3o!')
+  })
+
+  test('parses a pattern to array', () => {
+    const parser = new Parser(BLOCK)
+
+    expect(parser.getGrid()).to.deep.equal([[true, true], [true, true]])
+
+    
   })
 })
