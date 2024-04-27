@@ -43,7 +43,7 @@ export class Parser {
       for (let i = 1; i < row.length; i++) {
         let c = row[i]
         if (c != lastCell) {
-          pattern += n + (lastCell ? 'o' : 'b')
+          pattern += (n == 1 ? '' : n) + (lastCell ? 'o' : 'b')
           n = 1
           lastCell = c 
         } else {
@@ -51,7 +51,7 @@ export class Parser {
         }
       }
       if (lastCell) {
-        pattern += n + 'o'
+        pattern += (n == 1 ? '' : n) + 'o'
       }
       pattern += '$'
     })
