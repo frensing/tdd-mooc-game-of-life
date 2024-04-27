@@ -11,7 +11,6 @@ describe('FileReader', () => {
   const blockPath = './test/rle/block.rle'
 
   test('can open a file from a path', () => {
-    const reader = new FileReader()
-    expect(reader.read(blockPath)).to.equal(normalize(BLOCK))
+    expect(FileReader.read(blockPath)).to.equal(normalize(BLOCK))
   })
 })
