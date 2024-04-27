@@ -10,6 +10,8 @@ export class Parser {
 
     this.width = parseInt(header.get('x'))
     this.height = parseInt(header.get('y'))
+
+    this.pattern = lines.slice(1).map(x => x.trim()).join('')
   }
 
   getWidth() {
@@ -18,5 +20,9 @@ export class Parser {
 
   getHeight() {
     return this.height
+  }
+
+  getPattern() {
+    return this.pattern
   }
 }
