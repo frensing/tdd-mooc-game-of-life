@@ -1,6 +1,6 @@
 import { describe, test } from "vitest";
 import { expect } from "chai";
-import { Grid } from "../src/grid.mjs";
+import { Grid } from "../src/Grid.mjs";
 
 describe("Grid", () => {
   test("initial grid has empty cells", () => {
