@@ -21,6 +21,10 @@ export class Grid {
           newGrid[y][x] = false
         } else if (cell && (neigh == 2 || neigh == 3)) {
           newGrid[y][x] = true
+        } else if (cell && neigh > 3) {
+          newGrid[y][x] = false
+        } else if (neigh == 3) {
+          newGrid[y][x] = true
         }
       })
     });
