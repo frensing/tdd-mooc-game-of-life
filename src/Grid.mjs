@@ -49,6 +49,10 @@ export class Grid {
     return this.grid.map(row => row.map(x => x ? 'X' : '.').join('')).join('\n')
   }
 
+  getGrid() {
+    return this.grid
+  }
+
   #newGrid() {
     return Array.from(Array(this.height), () => Array(this.width).fill(false))
   }

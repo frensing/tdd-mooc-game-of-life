@@ -35,6 +35,11 @@ describe("Grid", () => {
        XXX`
     ))
   })
+
+  test('can return grid for encoding', () => {
+    let grid = new Grid(2, 2, parsedBlock)
+    expect(grid.getGrid()).to.deep.equal(parsedBlock)
+  })
 });
 
 describe('Simulate one generation', () => {
