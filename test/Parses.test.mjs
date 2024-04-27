@@ -22,7 +22,8 @@ const GLIDER_GRID = [
 const GLIDER_WITH_COMMENTS = 
   `#C This is a glider.
    x = 3, y = 3
-   bo$2bo$3o!`
+   bo$2bo$3o!
+   Further descriptions`
 
 const GOSPER_GLIDER_GUN = 
   `x = 36, y = 9
@@ -51,7 +52,7 @@ describe('Parser', () => {
     )
   })
 
-  test('ignores comment lines', () => {
+  test('ignores comment lines and lines after pattern ending !', () => {
     const parser = new Parser(GLIDER_WITH_COMMENTS)
 
     expect(parser.getWidth()).to.equal(3)
