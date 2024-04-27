@@ -4,9 +4,14 @@ export class Parser {
   }
 
   parse(s) {
-    const lines = s.split('\n')
+    let lines = s.split('\n')
+    lines = lines.filter(line => line[0] != '#')
 
-    const header = new Map(lines[0].split(', ').map(x => x.split(' = ')))
+    const header = new Map(
+      lines[0].trim()
+        .split(', ')
+        .map(x => x.split(' = '))
+    )
 
     this.width = parseInt(header.get('x'))
     this.height = parseInt(header.get('y'))
