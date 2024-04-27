@@ -3,6 +3,13 @@ import { expect } from "chai";
 import { Grid } from "../src/Grid.mjs";
 import { normalize } from "./utils.mjs";
 
+const parsedBlock = [[true, true], [true, true]]
+const parsedGlider = [
+  [false, true, false],
+  [false, false, true],
+  [true, true, true]
+]
+
 describe("Grid", () => {
   test("initial grid has empty cells", () => {
     const grid = new Grid(3, 3)
@@ -15,13 +22,6 @@ describe("Grid", () => {
   });
 
   test('init grid with parsed grid', () => {
-    const parsedBlock = [[true, true], [true, true]]
-    const parsedGlider = [
-      [false, true, false],
-      [false, false, true],
-      [true, true, true]
-    ]
-
     let grid = new Grid(2, 2, parsedBlock)
     expect(grid.toString()).to.equal(normalize(
       `XX
@@ -36,3 +36,28 @@ describe("Grid", () => {
     ))
   })
 });
+
+describe('Simulate one generation', () => {
+  const oneCell = [
+    [false, false, false],
+    [false, true, false],
+    [false, false, false]
+  ]
+
+  test('a single cell dies', () => {
+    const grid = new Grid(3, 3, oneCell)
+    expect(grid.toString()).to.equal(normalize(
+      `...
+       .X.
+       ...`
+    ))
+
+    grid.tick()
+
+    expect(grid.toString()).to.equal(normalize(
+      `...
+       ...
+       ...`
+    ))
+  })
+})
