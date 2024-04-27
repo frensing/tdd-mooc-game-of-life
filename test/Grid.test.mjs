@@ -12,6 +12,28 @@ describe("Grid", () => {
        ...`
     ))
   });
+
+  test('init grid with parsed grid', () => {
+    const parsedBlock = [[true, true], [true, true]]
+    const parsedGlider = [
+      [false, true, false],
+      [false, false, true],
+      [true, true, true]
+    ]
+
+    let grid = new Grid(2, 2, parsedBlock)
+    expect(grid.toString()).to.equal(normalize(
+      `XX
+       XX`
+    ))
+
+    grid = new Grid(3, 3, parsedGlider)
+    expect(grid.toString()).to.equal(normalize(
+      `.X.
+       ..X
+       XXX`
+    ))
+  })
 });
 
 function normalize(s) {
