@@ -15,11 +15,11 @@ export class Grid {
     const newGrid = this.#newGrid()
 
     this.grid.forEach((row, y) => {
-      row.forEach((_, x) => {
+      row.forEach((cell, x) => {
         const neigh = this.#countNeighbors(x, y)
         if (neigh < 2) {
           newGrid[y][x] = false
-        } else if (neigh == 2 || neigh == 3) {
+        } else if (cell && (neigh == 2 || neigh == 3)) {
           newGrid[y][x] = true
         }
       })
