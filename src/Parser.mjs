@@ -35,7 +35,7 @@ export class Parser {
     const header = this.encodeHeader(width, height)
     const pattern = this.encodePattern(grid)
 
-    return `${header}\n${pattern}\n`
+    return `${header}\n${pattern}`
   }
 
   encodeHeader(width, height) {
