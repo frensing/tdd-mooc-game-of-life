@@ -30,12 +30,12 @@ export class Parser {
 
       const matches = row.matchAll(re)
       for (const match of matches) {
-        const n = parseInt(match[1])
+        const n = parseInt(match[1] ? match[1] : 1)
         const c = match[2]
 
         if (c == 'o') {
-          for (let i = 0; i < x + n; i++) {
-            grid[y][x+i] = true
+          for (let i = x; i < x + n; i++) {
+            grid[y][i] = true
           }
         }
         x += n

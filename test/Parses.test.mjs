@@ -51,10 +51,17 @@ describe('Parser', () => {
   })
 
   test('parses a pattern to array', () => {
-    const parser = new Parser(BLOCK)
+    let parser = new Parser(BLOCK)
 
     expect(parser.getGrid()).to.deep.equal([[true, true], [true, true]])
 
-    
+    parser = new Parser(GLIDER)
+    expect(parser.getGrid()).to.deep.equal(
+      [
+        [false, true, false],
+        [false, false, true],
+        [true, true, true]
+      ]
+    )
   })
 })
