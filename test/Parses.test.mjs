@@ -1,14 +1,23 @@
 import { beforeEach, describe, test } from "vitest";
 import { expect } from "chai";
 import { Parser } from "../src/Parser.mjs";
+import { normalize } from "./utils.mjs";
 
 const BLOCK = 
   `x = 2, y = 2
    2o$2o!`
 
+const BLOCK_GRID = [[true, true], [true, true]]
+
 const GLIDER =  
   `x = 3, y = 3
    bo$2bo$3o!`
+
+const GLIDER_GRID = [
+  [false, true, false],
+  [false, false, true],
+  [true, true, true]
+]
 
 const GLIDER_WITH_COMMENTS = 
   `#C This is a glider.
@@ -53,15 +62,14 @@ describe('Parser', () => {
   test('parses a pattern to array', () => {
     let parser = new Parser(BLOCK)
 
-    expect(parser.getGrid()).to.deep.equal([[true, true], [true, true]])
+    expect(parser.getGrid()).to.deep.equal(BLOCK_GRID)
 
     parser = new Parser(GLIDER)
-    expect(parser.getGrid()).to.deep.equal(
-      [
-        [false, true, false],
-        [false, false, true],
-        [true, true, true]
-      ]
-    )
+    expect(parser.getGrid()).to.deep.equal(GLIDER_GRID)
+  })
+
+  test('encodes a given grid to rle', () => {
+    const parser = new Parser()
+    expect(parser.encode(BLOCK_GRID)).to.equal(normalize(BLOCK))
   })
 })
