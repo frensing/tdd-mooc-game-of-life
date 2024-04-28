@@ -8,6 +8,14 @@ export class Parser {
   parse(s) {
     let lines = s.split('\n')
     lines = lines.filter(line => line[0] != '#')
+    let lastPatternLine
+    for (let i = 0; i < lines.length; i++) {
+      if (lines[i].indexOf('!') != -1) {
+        lastPatternLine = i
+        break
+      }
+    }
+    lines = lines.slice(0, lastPatternLine + 1)
 
     const header = new Map(
       lines[0].trim()
