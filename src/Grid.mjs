@@ -32,6 +32,10 @@ export class Grid {
     this.grid = newGrid
   }
 
+  getGrid() {
+    return this.grid
+  }
+
   #countNeighbors(X, Y) {
     let s = 0
     for (let y = Math.max(Y-1, 0); y <= Math.min(Y+1, this.height-1); y++) {
