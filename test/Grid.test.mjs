@@ -79,4 +79,50 @@ describe('Simulate generations', () => {
     grid.tick()
     expect(grid.toString()).to.equal('...')
   })
+
+  test('cells with more than 3 neigh die, cells with exact 3 neigh come alive', () => {
+    const grid = new Grid(3, 3, [
+      [false, true, false],
+      [true, true, true],
+      [false, true, false]
+    ])
+    expect(grid.toString()).to.equal(normalize(
+      `.X.
+       XXX
+       .X.`
+    ))
+    grid.tick()
+    expect(grid.toString()).to.equal(normalize(
+      `XXX
+       X.X
+       XXX`
+    ))
+    grid.tick()
+    expect(grid.toString()).to.equal(normalize(
+      `X.X
+       ...
+       X.X`
+    ))
+  })
+
+  test('dead cells with 3 neigh come alive', () => {
+    const grid = new Grid(2, 2, [
+      [true, true],
+      [true, false]
+    ])
+    expect(grid.toString()).to.equal(normalize(
+      `XX
+       X.`
+    ))
+    grid.tick()
+    expect(grid.toString()).to.equal(normalize(
+      `XX
+       XX`
+    ))
+    grid.tick()
+    expect(grid.toString()).to.equal(normalize(
+      `XX
+       XX`
+    ))
+  })
 })
