@@ -1,3 +1,3 @@
 export function normalize(s) {
-  return s.replaceAll(' ', '').trim() + '\n';
+  return s.split('\n').map(x => x.trim()).join('\n');
 }

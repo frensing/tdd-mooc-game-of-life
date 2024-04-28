@@ -10,6 +10,6 @@ export class Grid {
   }
 
   toString() {
-    return this.grid.map(row => row.map(x => x ? 'X' : '.').join('')).join('\n') + '\n'
+    return this.grid.map(row => row.map(x => x ? 'X' : '.').join('')).join('\n')
   }
 }
