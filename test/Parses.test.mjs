@@ -25,7 +25,7 @@ const GLIDER_WITH_COMMENTS =
    bo$2bo$3o!`
 
 const GOSPER_GLIDER_GUN = 
-  `x = 36, y = 9, rule = B3/S23
+  `x = 36, y = 9
    24bo$22bobo$12b2o6b2o12b2o$11bo3bo4b2o12b2o$2o8bo5bo3b2o$2o8bo3bob2o4b
    obo$10bo5bo7bo$11bo3bo$12b2o!`
 
@@ -72,5 +72,11 @@ describe('Parser', () => {
     const parser = new Parser()
     expect(parser.encode(BLOCK_GRID)).to.equal(normalize(BLOCK))
     expect(parser.encode(GLIDER_GRID)).to.equal(normalize(GLIDER))
+  })
+
+  test('encoder breaks line after 70 character', () => {
+    const parser = new Parser(GOSPER_GLIDER_GUN)
+    const grid = parser.getGrid()
+    expect(parser.encode(grid)).to.equal(normalize(GOSPER_GLIDER_GUN))
   })
 })
