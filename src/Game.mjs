@@ -23,6 +23,10 @@ export class Game {
     }
   }
 
+  toRle() {
+    return this.parser.encode(this.grid.getGrid())
+  }
+
   toString() {
     return this.grid.toString()
   }
