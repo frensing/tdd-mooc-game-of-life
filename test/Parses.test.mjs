@@ -1,6 +1,7 @@
 import { beforeEach, describe, test } from "vitest";
 import { expect } from "chai";
 import { Parser } from "../src/Parser.mjs";
+import { normalize } from "./utils.mjs";
 
 const BLOCK = 
   `x = 2, y = 2
@@ -65,5 +66,10 @@ describe('Parser', () => {
 
     parser = new Parser(GLIDER)
     expect(parser.getGrid()).to.deep.equal(GLIDER_GRID)
+  })
+
+  test('encode given grid to rle', () => {
+    const parser = new Parser()
+    expect(parser.encode(BLOCK_GRID)).to.equal(normalize(BLOCK))
   })
 })

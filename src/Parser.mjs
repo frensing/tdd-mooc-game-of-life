@@ -1,6 +1,8 @@
 export class Parser {
   constructor(s) {
-    this.parse(s)
+    if (s) {
+      this.parse(s)
+    }
   }
 
   parse(s) {
@@ -17,6 +19,15 @@ export class Parser {
     this.height = parseInt(header.get('y'))
 
     this.pattern = lines.slice(1).map(x => x.trim()).join('')
+  }
+
+  encode(grid) {
+    const width = grid[0].length
+    const height = grid.length
+    const header = 'x = 2, y = 2'
+    const pattern = '2o$2o!'
+
+    return `${header}\n${pattern}`
   }
 
   getGrid() {
