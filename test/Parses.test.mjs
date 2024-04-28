@@ -71,5 +71,6 @@ describe('Parser', () => {
   test('encode given grid to rle', () => {
     const parser = new Parser()
     expect(parser.encode(BLOCK_GRID)).to.equal(normalize(BLOCK))
+    expect(parser.encode(GLIDER_GRID)).to.equal(normalize(GLIDER))
   })
 })

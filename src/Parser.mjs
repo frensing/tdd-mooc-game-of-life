@@ -24,10 +24,37 @@ export class Parser {
   encode(grid) {
     const width = grid[0].length
     const height = grid.length
-    const header = 'x = 2, y = 2'
-    const pattern = '2o$2o!'
+    const header = this.encodeHeader(width, height)
+    const pattern = this.encodePattern(grid)
 
     return `${header}\n${pattern}`
+  }
+
+  encodeHeader(width, height) {
+    return `x = ${width}, y = ${height}`
+  }
+
+  encodePattern(grid) {
+    let pattern = ''
+    grid.forEach(row => {
+      let lastCell = row[0]
+      let n = 1
+      for (let i = 1; i < row.length; i++) {
+        let c = row[i]
+        if (c != lastCell) {
+          pattern += (n == 1 ? '' : n) + (lastCell ? 'o' : 'b')
+          n = 1
+          lastCell = c
+        } else {
+          n += 1
+        }
+      }
+      if (lastCell) {
+        pattern += (n == 1 ? '' : n) + 'o'
+      }
+      pattern += '$'
+    })
+    return pattern.slice(0, -1) + '!'
   }
 
   getGrid() {
