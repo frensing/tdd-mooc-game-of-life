@@ -1,6 +1,7 @@
 import { describe, test } from "vitest";
 import { expect } from "chai";
 import { Grid } from "../src/Grid.mjs";
+import { normalize } from "./utils.mjs";
 
 describe("Grid", () => {
   test("initial grid has empty cells", () => {
@@ -35,7 +36,3 @@ describe("Grid", () => {
     ))
   })
 });
-
-function normalize(s) {
-  return s.replaceAll(' ', '').trim() + '\n'
-}
