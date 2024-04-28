@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Game of Life",
   "license": "MIT",
+  "main": "src/app.mjs",
   "private": true,
   "dependencies": {
     "lodash": "^4.17.21"
