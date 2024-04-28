@@ -72,4 +72,11 @@ describe('Simulate generations', () => {
     grid.tick()
     expect(grid.toString()).to.equal('...')
   })
+
+  test('dead cell with two neigh do not come alive', () => {
+    const grid = new Grid(3, 1, [[true, false, true]])
+    expect(grid.toString()).to.equal('X.X')
+    grid.tick()
+    expect(grid.toString()).to.equal('...')
+  })
 })
